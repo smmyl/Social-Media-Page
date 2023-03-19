@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <%-include ('./partials/head.ejs')%>
-    <title>home-page</title>
+    <title>Home</title>
 </head>
 <body>
     <div class = 'container'>
-        <h1 class = 'center'>Hello</h1>
+        <h1 class = ''>Hello</h1>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,13 +14,22 @@
             </button>
             <div class = 'collapse navbar-collapse' id = 'navbarContent'>
                 <div class = 'navbar-nav'>
-                    <a class = 'nav-item nav-link active' href = '#'>Newsfeed</a>
+                    <a class = 'nav-item nav-link active' href = '/homePage'>Newsfeed</a>
                     <a class = 'nav-item nav-link' href = '#'>Profile</a>
                     <a class = 'nav-item nav-link' href = '#'>Settings</a>
                     <a class = 'nav-item nav-link' href = '/'>Sign Out</a>
                 </div>
             </div>
         </nav>
+        <a href = './post'>New Post</a>
+        <h2>Newsfeed</h2>
+        <div class = ''>
+            <%for (i = 0; i < post.length; i++){%>
+                <p><%=post[i].date%></p>
+                <p><%=post[i].post%></p>
+                <a href = './<%=post[i]._id%>/editPost'>Edit Post</a>
+            <%}%>
+        </div>
     </div>
     <%-include ('./partials/bootstrap.ejs')%>
 </body>
