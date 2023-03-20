@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include ('./partials/head.ejs')%> 
+    <title>Profile</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dosis&display=swap');
+
+        body {
+            background-color: tan;
+            font-family: 'Bebas Neue', cursive;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: white;
+        }
+
+        li {
+            padding: 10px;
+            margin: 20px 15% 20px 15%;
+            background-color: #343a42a0;
+            color: black;
+        }
+
+        .postp {
+            background-color: whitesmoke;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px 10px 20px 10px;
+        }
+
+        .editp {
+            margin-left: 91%;
+        }
+
+        .deletep {
+            text-align: right;
+        }
+
+        h5 {
+            font-size: 2em;
+            padding: 10px;
+        }
+
+        .navbar-brand {
+            font-size: 2em;
+        }
+
+        img {
+            width: 100%;
+            margin: 20px;
+            border: 10px solid #343a42a0;
+        }
+
+
+        #profile-pic {
+            width: 300px
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            padding: 10px;
+            border-radius: 10px;
+        }
+        h4 {
+            display: inline-block;
+            font-size: 1.6em;
+        }
+        #github {
+            border: none;
+            width: 100px;
+            margin-left: 100px;
+            padding: 10px;
+        }
+        label {
+            font-size: 1.3em;
+        }
+        .box {
+            background-color: rgba(245, 245, 245, 0.804);
+            margin: 10px;
+            padding: 10px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">EdoC</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class = 'collapse navbar-collapse' id = 'navbarContent'>
+            <div class = 'navbar-nav'>
+                <a class = 'nav-item nav-link' href = '/homePage'>Newsfeed</a>
+                <a class = 'nav-item nav-link active' href = '/profile'>Profile</a>
+                <a class = 'nav-item nav-link' href = '/settings'>Settings</a>
+                <a class = 'nav-item nav-link' href = '/'>Sign Out</a>
+            </div>
+        </div>
+    </nav>
+    <div class = 'container'>
+        <form action = '/editProfile/<%=profile._id%>?_method=PUT' method = 'POST'>
+            <img id = 'profile-pic' src = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'>
+            <div class = 'content'>
+                <div class = 'box'>
+                    <label for = 'img'>Image Link:</label>
+                    <input id = 'img' type = 'text' class = 'form-control' placeholder = 'img-link' value = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'>
+                </div>
+                <input type = 'text' class = 'form-control' placeholder = 'username' value = <%=profile.userName%>>
+                <div class = 'box'>
+                    <input type = 'text' class = 'form-control' placeholder = 'username' value = '<%=profile.firstName%>'>
+                    <input type = 'text' class = 'form-control' placeholder = 'username' value = '<%=profile.lastName%>'>
+                </div>
+                <div class = 'box'>
+                    <label for = 'github'>Github Link:</label>
+                    <input type = 'text' class = 'form-control' placeholder = 'Git Hub Link' value = '<%=profile.github%>'>
+                </div>
+                <div class = 'box'>
+                    <textarea type = 'text' class = 'form-control' rows = '3'><%=profile.aboutMe%></textarea>
+                <input type = 'submit' value = 'Save Changes' class = 'btn btn-pimary'>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

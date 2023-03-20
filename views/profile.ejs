@@ -3,6 +3,37 @@
 <head>
     <%-include ('./partials/head.ejs')%> 
     <title>Profile</title>
+    <style>
+        #profile-pic {
+            width: 300px
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            padding: 10px;
+            border-radius: 10px;
+        }
+        h4 {
+            display: inline-block;
+            font-size: 1.6em;
+        }
+        #github {
+            border: none;
+            width: 100px;
+            margin-left: 100px;
+            padding: 10px;
+        }
+        label {
+            font-size: 1.3em;
+        }
+        .box {
+            background-color: rgba(245, 245, 245, 0.804);
+            margin: 10px;
+            padding: 10px;
+            border-radius: 15px;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -12,12 +43,31 @@
         </button>
         <div class = 'collapse navbar-collapse' id = 'navbarContent'>
             <div class = 'navbar-nav'>
-                <a class = 'nav-item nav-link active' href = '/homePage'>Newsfeed</a>
-                <a class = 'nav-item nav-link' href = '/profile'>Profile</a>
+                <a class = 'nav-item nav-link' href = '/homePage'>Newsfeed</a>
+                <a class = 'nav-item nav-link active' href = '/profile'>Profile</a>
                 <a class = 'nav-item nav-link' href = '/settings'>Settings</a>
                 <a class = 'nav-item nav-link' href = '/'>Sign Out</a>
             </div>
         </div>
     </nav>
+    <div class = 'container'>
+        <img id = 'profile-pic' src = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'>
+        <h1><%=profile[0].userName%></h1>
+        <div class = 'content'>
+            <div class = 'box'>
+                <h4><%=profile[0].firstName%></h4>
+                <h4><%=profile[0].lastName%></h4>
+            </div>
+            <div class = 'box'>
+                <label for = 'github'>Github:</label>
+                <a href = '<%=profile[0].github%>'><img id = 'github' src = 'https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png'></a>
+            </div>
+            <div class = 'box'>
+                <p style = 'font-size: 20px;'>About Me:</p>
+                <p style = 'margin-left: 20px;'id = 'aboutMe'><%=profile[0].aboutMe%></p>
+                <a class = 'editp' href = './<%=profile[0]._id%>/editProfile'>Edit</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

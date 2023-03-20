@@ -39,9 +39,16 @@ li {
 
 h5 {
     font-size: 2em;
-    padding: 20px;
+    padding: 10px;
 }
 
 .navbar-brand {
     font-size: 2em;
 }
+
+img {
+    width: 100%;
+    margin: 20px;
+    border: 10px solid #343a42a0;
+}
+

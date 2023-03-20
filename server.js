@@ -10,10 +10,13 @@ const User = require('./models/user.js')
 const userSeed = require('./models/userSeed.js')
 const Post = require('./models/post.js')
 const postSeed = require('./models/postSeed.js')
+const profileSeed = require('./models/profileSeed.js')
+const Profile = require('./models/profile.js')
 
 //==Reset
-//User.collection.drop()
+// User.collection.drop()
 // Post.collection.drop()
+// Profile.collection.drop()
 
 //==App.Use
 app.use(express.static('public'))
@@ -31,22 +34,24 @@ app.get('/postSeed', (req, res) => {
         res.send(postSeed)
     })
 })
+app.get('/profileSeed', (req, res) => {
+    Profile.create(profileSeed).then(() => {
+        res.send(profileSeed)
+    })
+})
 
 //==Create Routes
 app.get('/', (req, res) => {
-    res.send('hi')
+    res.render('login.ejs')
 })
-
 app.get('/homePage', (req, res) => {
     Post.find({}).then((Post) => {
     res.render('homePage.ejs', {post: Post})
     })
 })
-
 app.get('/post', (req, res) => {
     res.render('post.ejs')
 })
-
 app.get('/:id/editPost', (req, res) => {
     Post.findById(req.params.id).then((foundPost) => {
         res.render('editPost.ejs',
@@ -55,9 +60,18 @@ app.get('/:id/editPost', (req, res) => {
         })
     })
 })
-
 app.get('/profile', (req, res) => {
-    res.render('profile.ejs')
+    Profile.find({}).then((Profile) => {
+    res.render('profile.ejs', {profile: Profile})
+    })
+})
+app.get('/:id/editProfile', (req, res) => {
+    Profile.findById(req.params.id).then((foundProfile) => {
+        res.render('editProfile.ejs',
+        {
+            profile: foundProfile
+        })
+    })
 })
 
 //==Edit
@@ -71,6 +85,11 @@ app.put('/:id', (req, res) => {
       res.redirect('/homePage')
     })
 })
+app.put('/editProfile/:id', (req, res) => {
+    Profile.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(() => {
+      res.redirect('/profile')
+    })
+})
 
 //==Post
 app.post('/homePage', (req, res) => {
@@ -81,6 +100,11 @@ app.post('/homePage', (req, res) => {
       }
       Post.create(req.body).then(() => {
         res.redirect('/homePage')
+      })
+})
+app.post('/homePage', (req, res) => {
+      Profile.create(req.body).then(() => {
+        res.redirect('/profile')
       })
 })
 
