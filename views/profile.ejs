@@ -5,7 +5,8 @@
     <title>Profile</title>
     <style>
         #profile-pic {
-            width: 300px
+            width: 300px;
+            border-radius: 300px;
         }
         .container {
             text-align: center;
@@ -32,6 +33,11 @@
             margin: 10px;
             padding: 10px;
             border-radius: 15px;
+            border: 10px solid #343a42a0;
+        }
+        p {
+            text-align: left;
+            padding: 10px;
         }
     </style>
 </head>
@@ -51,7 +57,7 @@
         </div>
     </nav>
     <div class = 'container'>
-        <img id = 'profile-pic' src = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'>
+        <img id = 'profile-pic' src = '<%=profile[0].image%>'>
         <h1><%=profile[0].userName%></h1>
         <div class = 'content'>
             <div class = 'box'>

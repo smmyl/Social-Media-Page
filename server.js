@@ -85,7 +85,7 @@ app.put('/:id', (req, res) => {
       res.redirect('/homePage')
     })
 })
-app.put('/editProfile/:id', (req, res) => {
+app.put('/2/:id', (req, res) => {
     Profile.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(() => {
       res.redirect('/profile')
     })

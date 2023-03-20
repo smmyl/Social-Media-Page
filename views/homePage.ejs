@@ -32,7 +32,7 @@
             </div>
             <div class = 'col'>
                 <ul class = 'list-unstyled'>
-                    <%for (i = 0; i < post.length; i++){%>
+                    <%for (i = post.length-1; i >= 0; i--){%>
                         <li>
                             <p class = 'postp'><%=post[i].date%></p>
                             <p class = 'postp'><%=post[i].post%></p>

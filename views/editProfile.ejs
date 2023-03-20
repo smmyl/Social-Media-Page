@@ -106,24 +106,24 @@
         </div>
     </nav>
     <div class = 'container'>
-        <form action = '/editProfile/<%=profile._id%>?_method=PUT' method = 'POST'>
-            <img id = 'profile-pic' src = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'>
+        <form action = '/2/<%=profile._id%>?_method=PUT' method = 'POST'>
+            <img id = 'profile-pic' src = '<%=profile.image%>'>
             <div class = 'content'>
                 <div class = 'box'>
                     <label for = 'img'>Image Link:</label>
-                    <input id = 'img' type = 'text' class = 'form-control' placeholder = 'img-link' value = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'>
+                    <input id = 'img' type = 'text' class = 'form-control' name = 'image' placeholder = 'img-link' value = '<%=profile.image%>'>
                 </div>
-                <input type = 'text' class = 'form-control' placeholder = 'username' value = <%=profile.userName%>>
+                <input type = 'text' class = 'form-control' name = 'userName' placeholder = 'username' value = <%=profile.userName%>>
                 <div class = 'box'>
-                    <input type = 'text' class = 'form-control' placeholder = 'username' value = '<%=profile.firstName%>'>
-                    <input type = 'text' class = 'form-control' placeholder = 'username' value = '<%=profile.lastName%>'>
+                    <input type = 'text' class = 'form-control' name = 'firstName' placeholder = 'First Name' value = '<%=profile.firstName%>'>
+                    <input type = 'text' class = 'form-control' name = 'lastName' placeholder = 'Last Name' value = '<%=profile.lastName%>'>
                 </div>
                 <div class = 'box'>
                     <label for = 'github'>Github Link:</label>
-                    <input type = 'text' class = 'form-control' placeholder = 'Git Hub Link' value = '<%=profile.github%>'>
+                    <input type = 'text' class = 'form-control' name = 'github' placeholder = 'Git Hub Link' value = '<%=profile.github%>'>
                 </div>
                 <div class = 'box'>
-                    <textarea type = 'text' class = 'form-control' rows = '3'><%=profile.aboutMe%></textarea>
+                    <textarea type = 'text' name = 'aboutMe' class = 'form-control' rows = '3'><%=profile.aboutMe%></textarea>
                 <input type = 'submit' value = 'Save Changes' class = 'btn btn-pimary'>
                 </div>
             </div>
