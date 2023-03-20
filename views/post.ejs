@@ -3,24 +3,44 @@
 <head>
     <%-include ('./partials/head.ejs')%>
     <title>New Post</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dosis&display=swap');
+        body {
+            background-color: tan;
+            font-family: 'Bebas Neue', cursive;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            padding: 20px;
+        }
+        h5 {
+            font-size: 2em;
+            padding: 20px;
+        }
+        .navbar-brand {
+            font-size: 2em;
+        }
+    </style>
 </head>
 <body>
-    <div class = 'container'>
-        <h1 class = 'center'>New Post</h1>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class = 'collapse navbar-collapse' id = 'navbarContent'>
-                <div class = 'navbar-nav'>
-                    <a class = 'nav-item nav-link active' href = '/homePage'>Newsfeed</a>
-                    <a class = 'nav-item nav-link' href = '#'>Profile</a>
-                    <a class = 'nav-item nav-link' href = '#'>Settings</a>
-                    <a class = 'nav-item nav-link' href = '/'>Sign Out</a>
-                </div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Edoc</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class = 'collapse navbar-collapse' id = 'navbarContent'>
+            <div class = 'navbar-nav'>
+                <a class = 'nav-item nav-link active' href = '/homePage'>Newsfeed</a>
+                <a class = 'nav-item nav-link' href = '/profile'>Profile</a>
+                <a class = 'nav-item nav-link' href = '/settings'>Settings</a>
+                <a class = 'nav-item nav-link' href = '/'>Sign Out</a>
             </div>
-        </nav>
+        </div>
+    </nav>
+    <div class = 'container'>
+        <h5>New Post</h5>
         <form action = '/homePage' method = 'POST'>
             <div class = 'form-group'>
                 <label for = 'date'>Date</label>
@@ -34,7 +54,7 @@
                 <input type = 'checkbox' class = 'form-check-input' id = 'private' name = 'private'>
                 <label class = 'form-check-label' for = 'private'>Private Post</label>
             </div>
-            <input type = 'submit' class = 'btn btn-pimary' value = 'Create Post'>
+            <input type = 'submit' class = 'btn btn-pimary' value = 'Post'>
         </form>
     </div>
     <%-include ('./partials/bootstrap.ejs')%>

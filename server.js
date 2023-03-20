@@ -2,8 +2,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
-const app = express()
 const mongoURI = 'mongodb://localhost:27017/EdoC'
+const app = express()
 
 //==Seed
 const User = require('./models/user.js')
@@ -56,11 +56,21 @@ app.get('/:id/editPost', (req, res) => {
     })
 })
 
-// app.get('/post/:id', (req, res) => {
-//     res.send(`${Post._req.params.id}`)
-// })
+app.get('/profile', (req, res) => {
+    res.render('profile.ejs')
+})
 
-// //==Edit
+//==Edit
+app.put('/:id', (req, res) => {
+    if (req.body.private === 'on'){
+      req.body.private = true
+    } else {
+      req.body.private = false
+    }
+    Post.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(() => {
+      res.redirect('/homePage')
+    })
+})
 
 //==Post
 app.post('/homePage', (req, res) => {
@@ -74,31 +84,12 @@ app.post('/homePage', (req, res) => {
       })
 })
 
-app.put('/:id', (req, res) => {
-    if (req.body.private === 'on'){
-      req.body.private = true
-    } else {
-      req.body.private = false
-    }
-  
-    Post.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(() => {
-      res.redirect('/homePage')
+//==Delete
+app.delete('/:id', (req, res) => {
+    Post.findByIdAndRemove(req.params.id).then(() => {
+        res.redirect('/homePage')
     })
 })
-
-// app.post('/homePage', (req, res) => {
-//     if(req.body.toBePrivate === 'on') { 
-//         req.body.toBePrivate = true;
-//     } else { 
-//         req.body.toBePrivate = false;
-//     }
-//     Post.create(req.body).then((createdPost) => 
-//         {
-//             res.redirect('/homePage')
-//         })
-// })
-//==Delete
-
 
 //==Connecting
 mongoose.connect(mongoURI).then(() => {

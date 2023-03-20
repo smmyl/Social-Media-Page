@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const postSchema = new Schema(
     {
-        date: String,
-        post: String,
+        date: {type: String, required: true},
+        post: {type: String, required: true},
         private: Boolean
     }, {timestamps: true}
 )
